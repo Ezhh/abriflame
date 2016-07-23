@@ -1,0 +1,10 @@
+Mod by Shara RedCat.
+
+Textures are modified copies of originals from Semmett9's fake_fire. Semmett9's original version of fake_fire did not state a license and is believed to have been under WTFPL or similar license. (If someone can confirm, please let me know).
+
+Code by Shara RedCat and tenplus1 can be considered under WTFPL. 
+
+
+
+
+
