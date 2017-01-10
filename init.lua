@@ -1,8 +1,3 @@
---[[
-
-	Abriflame by Shara Redcat
-
-]]--
 
 local function smoke(pos, node, clicker, enable)
 
@@ -58,7 +53,7 @@ local function smoke(pos, node, clicker, enable)
 
 end
 
--- FLAME TYPES
+-- flame types
 local flame_types = {
 	"green", "yellow", "black", "orange", "cyan",
 	"magenta", "purple", "blue", "red", "frosted"
@@ -107,7 +102,7 @@ for _, f in pairs(flame_types) do
 end
 
 
--- FLINT and STEEL override
+-- fire starter tool
 minetest.register_craftitem("abriflame:flint", {
 	description = "Fire Starter",
 	inventory_image = "fire_flint_steel.png",
@@ -172,6 +167,8 @@ minetest.register_craftitem("abriflame:flint", {
 	end,
 })
 
+
+-- fire starter tool recipe
 minetest.register_craft({
 	output = "abriflame:flint",
 	recipe = {
