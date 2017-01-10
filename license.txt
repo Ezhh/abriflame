@@ -1,8 +1,14 @@
-Mod by Shara RedCat.
 
-Textures are modified copies of originals from Semmett9's fake_fire. Semmett9's original version of fake_fire did not state a license and is believed to have been under WTFPL or similar license. (If someone can confirm, please let me know).
+Code:
+License: MIT (https://opensource.org/licenses/MIT)
+By Shara RedCat and tenplus1 
 
-Code by Shara RedCat and tenplus1 can be considered under WTFPL. 
+Textures:
+Original textures from Semmett9's fake_fire, now found in the homedecor modpack (https://github.com/minetest-mods/homedecor_modpack),
+with adjustments and recolouring by Shara RedCat.
+License: CC-BY-SA 3.0 or higher (https://creativecommons.org/licenses/by/3.0/).
+
+
 
 
 
