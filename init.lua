@@ -102,15 +102,20 @@ minetest.register_craftitem("abriflame:flint", {
 	liquids_pointable = false,
 
 	on_use = function(itemstack, user, pointed_thing)
+		if pointed_thing.type ~= "node" then
+			return itemstack
+		end
 
-		if pointed_thing.type ~= "node"
-		or minetest.get_node(pointed_thing.above).name ~= "air"
-		or minetest.is_protected(pointed_thing.above, user:get_player_name()) then
+		local pos = ({x = pointed_thing.under.x, 
+			y = pointed_thing.under.y + 1, 
+			z = pointed_thing.under.z})
+
+		if minetest.get_node(pos).name ~= "air" or
+				minetest.is_protected(pointed_thing.above, user:get_player_name()) then
 			return itemstack
 		end
 
 		local nod = minetest.get_node(pointed_thing.under).name
-		local pos = pointed_thing.under ; pos.y = pos.y + 1
 
 		if nod == "abriglass:stained_glass_green" then
 			minetest.set_node(pos, {name = "abriflame:green_fire"})
