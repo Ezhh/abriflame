@@ -1,21 +1,16 @@
 
 local function smoke(pos, node, clicker, enable)
-
 	local meta = minetest.get_meta(pos)
 	local handler = meta:get_int("sound")
 	local particle = meta:get_int("smoke")
 
 	if particle ~= 0 or enable ~= true then
-
 		if handler then
 			minetest.sound_stop(handler)
 		end
-
 		minetest.delete_particlespawner(particle)
-
 		meta:set_int("smoke", nil)
 		meta:set_int("sound", nil)
-
 		return
 	end
 
@@ -50,8 +45,8 @@ local function smoke(pos, node, clicker, enable)
 
 	meta:set_int("smoke", particle)
 	meta:set_int("sound", handler)
-
 end
+
 
 -- flame types
 local flame_types = {
@@ -60,7 +55,6 @@ local flame_types = {
 }
 
 for _, f in pairs(flame_types) do
-
 	minetest.register_node("abriflame:" .. f .. "_fire", {
 		inventory_image = f .. "_fire_inv.png",
 		wield_image = f .. "_fire_inv.png",
@@ -89,9 +83,7 @@ for _, f in pairs(flame_types) do
 		end,
 
 		on_destruct = function (pos)
-
 			smoke(pos, nil, nil, false)
-
 			minetest.sound_play("fire_extinguish_flame", {
 				pos = pos,
 				max_hear_distance = 5,
@@ -121,48 +113,28 @@ minetest.register_craftitem("abriflame:flint", {
 		local pos = pointed_thing.under ; pos.y = pos.y + 1
 
 		if nod == "abriglass:stained_glass_green" then
-
 			minetest.set_node(pos, {name = "abriflame:green_fire"})
-
 		elseif nod == "abriglass:stained_glass_yellow" then
-
 			minetest.set_node(pos, {name = "abriflame:yellow_fire"})
-
 		elseif nod == "abriglass:stained_glass_black" then
-
 			minetest.set_node(pos, {name = "abriflame:black_fire"})
-
 		elseif nod == "abriglass:stained_glass_orange" then
-
 			minetest.set_node(pos, {name = "abriflame:orange_fire"})
-
 		elseif nod == "abriglass:stained_glass_cyan" then
-
 			minetest.set_node(pos, {name = "abriflame:cyan_fire"})
-
 		elseif nod == "abriglass:stained_glass_magenta" then
-
 			minetest.set_node(pos, {name = "abriflame:magenta_fire"})
-
 		elseif nod == "abriglass:stained_glass_purple" then
-
 			minetest.set_node(pos, {name = "abriflame:purple_fire"})
-
 		elseif nod == "abriglass:stained_glass_blue" then
-
 			minetest.set_node(pos, {name = "abriflame:blue_fire"})
-
 		elseif nod == "abriglass:stained_glass_red" then
-
 			minetest.set_node(pos, {name = "abriflame:red_fire"})
-
 		elseif nod == "abriglass:stained_glass_frosted" then
-
 			minetest.set_node(pos, {name = "abriflame:frosted_fire"})
 		end
 
 		itemstack:add_wear(65535 / 65)
-
 		return itemstack
 	end,
 })
