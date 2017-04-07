@@ -111,6 +111,7 @@ minetest.register_craftitem("abriflame:flint", {
 			z = pointed_thing.under.z})
 
 		if minetest.get_node(pos).name ~= "air" or
+				minetest.is_protected(pos, user:get_player_name()) or
 				minetest.is_protected(pointed_thing.above, user:get_player_name()) then
 			return itemstack
 		end
