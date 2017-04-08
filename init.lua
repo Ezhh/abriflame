@@ -95,7 +95,7 @@ end
 
 
 -- fire starter tool
-minetest.register_craftitem("abriflame:flint", {
+minetest.register_tool("abriflame:flint", {
 	description = "Fire Starter",
 	inventory_image = "fire_flint_steel.png",
 	stack_max = 1,
