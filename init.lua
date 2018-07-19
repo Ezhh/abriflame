@@ -9,8 +9,8 @@ local function smoke(pos, node, clicker, enable)
 			minetest.sound_stop(handler)
 		end
 		minetest.delete_particlespawner(particle)
-		meta:set_int("smoke", nil)
-		meta:set_int("sound", nil)
+		meta:set_int("smoke", 0)
+		meta:set_int("sound", 0)
 		return
 	end
 
