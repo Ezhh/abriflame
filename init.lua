@@ -14,9 +14,7 @@ local function smoke(pos, node, clicker, enable)
 		return
 	end
 
-	local node = minetest.get_node({x = pos.x, y = pos.y + 1, z = pos.z}).name
-
-	if node ~= "air" or particle ~= 0 then
+	if minetest.get_node({x = pos.x, y = pos.y + 1, z = pos.z}).name ~= "air" or particle ~= 0 then
 		return
 	end
 
@@ -106,8 +104,8 @@ minetest.register_tool("abriflame:flint", {
 			return itemstack
 		end
 
-		local pos = ({x = pointed_thing.under.x, 
-			y = pointed_thing.under.y + 1, 
+		local pos = ({x = pointed_thing.under.x,
+			y = pointed_thing.under.y + 1,
 			z = pointed_thing.under.z})
 
 		if minetest.get_node(pos).name ~= "air" or
