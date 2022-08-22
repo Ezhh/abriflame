@@ -1,6 +1,6 @@
 
 Textures:
-Original textures from Semmett9's fake_fire, now found in the homedecor modpack (https://github.com/minetest-mods/homedecor_modpack),
+Original textures from Semmett9's fake_fire, now found in the homedecor modpack (https://github.com/mt-mods/homedecor_modpack),
 with adjustments and recolouring by Shara RedCat.
 License: CC-BY-SA 3.0 or higher (https://creativecommons.org/licenses/by/3.0/).
 
