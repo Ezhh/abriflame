@@ -127,13 +127,9 @@ if #version_segments >= 3 and tonumber(version_segments[2]) >= 6 then
 	})
 end
 
+local old_on_use = minetest.registered_items["fire:flint_and_steel"].on_use
 -- fire starter tool
-minetest.register_tool("abriflame:flint", {
-	description = "Fire Starter",
-	inventory_image = "fire_flint_steel.png",
-	stack_max = 1,
-	liquids_pointable = false,
-
+minetest.override_item("fire:flint_and_steel", {
 	on_use = function(itemstack, user, pointed_thing)
 		if pointed_thing.type ~= "node" then
 			return itemstack
@@ -159,10 +155,10 @@ minetest.register_tool("abriflame:flint", {
 			minetest.set_node(pos, {name = "abriflame:" .. namesplit[3] .. "_fire"})
 		end
 
-		itemstack:add_wear(65535 / 65)
-		return itemstack
+		return old_on_use(itemstack, user, pointed_thing)
 	end,
 })
+minetest.register_alias("abriflame:flint", "fire:flint_and_steel")
 
 
 -- fire starter tool recipe
