@@ -57,9 +57,9 @@ for _, f in pairs(flame_types) do
 		inventory_image = f .. "_fire_inv.png",
 		wield_image = f .. "_fire_inv.png",
 		description = f .. " fire",
-		drawtype = "plantlike",
+		drawtype = "firelike",
 		paramtype = "light",
-		groups = {dig_immediate = 3, not_in_creative_inventory = 1},
+		groups = {dig_immediate = 3, not_in_creative_inventory = 1, abriflame_fire = 1},
 		sunlight_propagates = true,
 		buildable_to = true,
 		walkable = false,
@@ -91,14 +91,44 @@ for _, f in pairs(flame_types) do
 	})
 end
 
+if minetest.features.particlespawner_tweenable then
+	minetest.register_abm({
+		nodenames = { "group:abriflame_fire" },
+		interval = 1,
+		chance = 1,
+		catch_up = false,
+		action = function(pos, node)
+			local color = node.name:split(":")[2]:split("_")[1]
+			if color=="frosted" then
+				color = "white"
+			end
+			minetest.add_particlespawner({
+				pos = { min = vector.add(pos, vector.new(-0.5, -0.5, -0.5)), max = vector.add(pos, vector.new(0.5, 0.5, 0.5)) },
+				vel = { min = vector.new(-0.5, 0.5, -0.5), max = vector.new( 0.5, 0.5, 0.5) },
+				acc = vector.new(0, 0.1, 0),
+				time = 1,
+				amount = 100,
+				exptime = 1,
+				collisiondetection = true,
+				collision_removal = true,
+				glow = 14,
+				texpool = {
+					{ name = "flame_spark.png^[multiply:"..color, alpha_tween = { 1, 0 },	scale_tween = { 0.5, 0 }, blend = "screen" },
+					{ name = "flame_spark.png^[multiply:#c00", alpha_tween = { 1, 0 },	scale_tween = { 0.5, 0 }, blend = "screen" },
+					{ name = "flame_spark.png^[multiply:#800", alpha_tween = { 1, 0 },	scale_tween = { 0.5, 0 }, blend = "screen" },
+					{ name = "flame_spark.png^[multiply:#ff0", alpha_tween = { 1, 0 },	scale_tween = { 0.5, 0 }, blend = "screen" },
+					{ name = "flame_spark.png^[multiply:#fc0", alpha_tween = { 1, 0 },	scale_tween = { 0.5, 0 }, blend = "screen" },
+					{ name = "flame_spark.png^[multiply:#cc0", alpha_tween = { 1, 0 },	scale_tween = { 0.5, 0 }, blend = "screen" },
+					{ name = "flame_spark.png^[multiply:#f80", alpha_tween = { 1, 0 },	scale_tween = { 0.5, 0 }, blend = "screen" },
+				}
+			})
+		end
+	})
+end
 
+local old_on_use = minetest.registered_items["fire:flint_and_steel"].on_use
 -- fire starter tool
-minetest.register_tool("abriflame:flint", {
-	description = "Fire Starter",
-	inventory_image = "fire_flint_steel.png",
-	stack_max = 1,
-	liquids_pointable = false,
-
+minetest.override_item("fire:flint_and_steel", {
 	on_use = function(itemstack, user, pointed_thing)
 		if pointed_thing.type ~= "node" then
 			return itemstack
@@ -124,16 +154,7 @@ minetest.register_tool("abriflame:flint", {
 			minetest.set_node(pos, {name = "abriflame:" .. namesplit[3] .. "_fire"})
 		end
 
-		itemstack:add_wear(65535 / 65)
-		return itemstack
+		return old_on_use(itemstack, user, pointed_thing)
 	end,
 })
-
-
--- fire starter tool recipe
-minetest.register_craft({
-	output = "abriflame:flint",
-	recipe = {
-		{"default:mese_crystal_fragment", "default:steel_ingot"}
-	}
-})
+minetest.register_alias("abriflame:flint", "fire:flint_and_steel")
