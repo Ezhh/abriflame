@@ -1,6 +1,4 @@
-
 name: luacheck
-
 on: [push, pull_request]
 
 jobs:
@@ -9,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@main
     - name: apt
       run: sudo apt-get install -y luarocks
     - name: luacheck install
