@@ -145,13 +145,18 @@ minetest.override_item("fire:flint_and_steel", {
 		end
 
 		local node = minetest.get_node(pointed_thing.under).name
+		local param2 = minetest.get_node(pointed_thing.under).param2
 		local nodesplit, namesplit = node:split(":"), {}
 		if #nodesplit == 2 then
 			namesplit = nodesplit[2]:split("_")
 		end
 
-		if nodesplit[1] == "abriglass" and #namesplit == 3 and namesplit[1] == "stained" then
+		if nodesplit[1] == "abriglass" and #namesplit == 3 and namesplit[1] == "stained" and namesplit[3] ~= "hardware" then
 			minetest.set_node(pos, {name = "abriflame:" .. namesplit[3] .. "_fire"})
+		end
+
+		if abriglass.glass_list and node=="abriglass:stained_glass_hardware" and param2 < #abriglass.glass_list then
+			minetest.set_node(pos, {name = "abriflame:" .. abriglass.glass_list[param2+1][1] .. "_fire"})
 		end
 
 		return old_on_use(itemstack, user, pointed_thing)
