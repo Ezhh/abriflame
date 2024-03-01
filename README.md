@@ -6,7 +6,7 @@ Coloured flames Minetest mod by Shara RedCat which adds:
 1. Ten decorative, non-destructive fire types.
 2. A fire starter tool to create them.
 
-Note: This mod depends on [abriglass](https://github.com/Ezhh/abriglass) and will not work without it.
+Note: This mod depends on [abriglass](https://github.com/mt-mods/abriglass) and will not work without it.
 
 
 Crafting

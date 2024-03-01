@@ -1,12 +1,18 @@
 
 Textures:
-Original textures from Semmett9's fake_fire, now found in the homedecor modpack (https://github.com/minetest-mods/homedecor_modpack),
+Original textures from Semmett9's fake_fire, now found in the homedecor modpack (https://github.com/mt-mods/homedecor_modpack),
 with adjustments and recolouring by Shara RedCat.
 License: CC-BY-SA 3.0 or higher (https://creativecommons.org/licenses/by/3.0/).
 
+flame_spark.png x2048
+License: CC0 (https://creativecommons.org/publicdomain/zero/1.0/)
+
 Code:
 License: MIT (https://opensource.org/licenses/MIT)
-By Shara RedCat and tenplus1
+Shara RedCat
+tenplus1
+wsor
+x2048
 
 
 

@@ -1,1 +1,0 @@
-Adds coloured fire through use of fire starter tool.
