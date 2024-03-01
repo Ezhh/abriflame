@@ -60,6 +60,7 @@ for _, f in pairs(flame_types) do
 		drawtype = "firelike",
 		paramtype = "light",
 		groups = {dig_immediate = 3, not_in_creative_inventory = 1, abriflame_fire = 1},
+		is_ground_content = false,
 		sunlight_propagates = true,
 		buildable_to = true,
 		walkable = false,
